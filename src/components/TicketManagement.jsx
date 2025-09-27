@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import Count from "./Count";
 import { toast } from "react-toastify";
+import DateImg from "./../assets/ri_calendar-line.png"
 
 const TicketManagement = ({ fetchPromise }) => {
   const ticketsData = use(fetchPromise); 
@@ -86,9 +87,9 @@ const TicketManagement = ({ fetchPromise }) => {
                       {ticket.priority}
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex items-center gap-2">
                     <span className="font-medium">{ticket.customer}</span>
-                    <span>{ticket.createdAt}</span>
+                    <span className="flex items-center gap-1"> <img src={DateImg} alt="" /> {ticket.createdAt}</span>
                   </div>
                 </div>
               </div>

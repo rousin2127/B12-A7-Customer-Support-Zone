@@ -1,4 +1,7 @@
-
+import XImg from "./../assets/x.png"
+import IImg from "./../assets/i.png"
+import FImg from "./../assets/f.png"
+import MImg from "./../assets/m.png"
 
 const Footer = () => {
   return (
@@ -40,10 +43,10 @@ const Footer = () => {
         <div className="flex flex-col items-center sm:items-start">
           <h4 className="text-white font-semibold mb-2">Social Links</h4>
           <ul className="space-y-1 text-sm text-center sm:text-start ">
-            <li>@CS-Ticket System</li>
-            <li>@CS-Ticket System</li>
-            <li>@CS-Ticket System</li>
-            <li>support@cs.com</li>
+            <li className="flex items-center justify-center gap-1"> <img src={XImg} alt="" /> @CS-Ticket System</li>
+            <li className="flex items-center justify-center gap-1"> <img src={IImg} alt="" /> @CS-Ticket System</li>
+            <li className="flex items-center justify-center gap-1"><img src={FImg} alt="" /> @CS-Ticket System</li>
+            <li className="flex items-center justify-center gap-1 w-fit"><img src={MImg} alt="" /> support@cs.com</li>
           </ul>
         </div>
       </div>
