@@ -3,12 +3,11 @@ import Count from "./Count";
 import { toast } from "react-toastify";
 
 const TicketManagement = ({ fetchPromise }) => {
-  const ticketsData = use(fetchPromise); // Suspends until data is ready
+  const ticketsData = use(fetchPromise); 
   const [tickets, setTickets] = useState(ticketsData);
   const [inProgressTickets, setInProgressTickets] = useState([]);
   const [resolvedTickets, setResolvedTickets] = useState([]);
 
-  // Handle selecting a ticket → moves it to In-Progress
   const handleSelectTicket = (ticket) => {
     if (ticket.status === "Open") {
       const updatedTickets = tickets.map((t) =>
@@ -16,23 +15,21 @@ const TicketManagement = ({ fetchPromise }) => {
       );
       setTickets(updatedTickets);
       setInProgressTickets([...inProgressTickets, { ...ticket, status: "In-Progress" }]);
-      toast("in-progress")
+      toast("In-progress")
     }
   };
 
-  // Handle completing a ticket → moves it to Resolved
   const handleComplete = (ticket) => {
     const updatedTickets = tickets.map((t) =>
       t.id === ticket.id ? { ...t, status: "Resolved" } : t
     );
     setTickets(updatedTickets);
 
-    // Remove from In-Progress
     setInProgressTickets(inProgressTickets.filter((t) => t.id !== ticket.id));
 
-    // Add to Resolved
+
     setResolvedTickets([...resolvedTickets, { ...ticket, status: "Resolved" }]);
-    toast("complete")
+    toast("Complete")
 
   };
 
@@ -44,17 +41,18 @@ const TicketManagement = ({ fetchPromise }) => {
         resolvedCount={resolvedTickets.length}
       />
 
+       {/* ticket card design */}
       
-      <div className="w-[1140px] my-[50px] mx-auto flex">
+      <div className="sm:w-[1140px] my-[50px] sm:mx-auto mx-5  flex flex-col-reverse  sm:flex sm:flex-row">
         
-        <div className="w-[820px]">
-          <h2 className="text-xl font-bold mb-4 pb-2">Customer Tickets</h2>
-          <div className="grid grid-cols-2 gap-4">
+        <div className="sm:w-[820px]">
+          <h2 className="sm:text-xl font-bold mb-4 pb-2 ">Customer Tickets</h2>
+          <div className="grid grid-cols-1 sm:grid sm:grid-cols-2 gap-4">
             {tickets.map((ticket) => (
               <div
                 key={ticket.id}
                 onClick={() => handleSelectTicket(ticket)}
-                className={`border rounded p-3 cursor-pointer shadow-sm bg-white hover:shadow-md ${
+                className={` rounded p-3 cursor-pointer shadow-sm bg-white hover:shadow-md ${
                   ticket.status === "Resolved" ? "opacity-50" : ""
                 }`}
               >
@@ -99,16 +97,18 @@ const TicketManagement = ({ fetchPromise }) => {
         </div>
 
         {/* Task Status */}
-        <div className="ml-6 w-[280px]">
-          <h2 className="text-xl font-bold pb-2">Task Status</h2>
+        <div className="ml-6 w-[280px] mx-auto ">
+          <div >
+          <div>
+          <h2 className="sm:text-xl font-semibold sm:font-bold pb-2 ">Task Status</h2>
+            </div>
 
-          {/* In-Progress Tickets */}
           <div className="mb-6">
             {inProgressTickets.length > 0 ? (
               inProgressTickets.map((ticket) => (
                 <div
                   key={ticket.id}
-                  className="mb-3 p-3 border rounded shadow-sm bg-white"
+                  className="mb-3 p-3  rounded shadow-sm bg-white"
                 >
                   <h3 className="font-semibold mb-2">{ticket.title}</h3>
                   <button
@@ -123,16 +123,19 @@ const TicketManagement = ({ fetchPromise }) => {
               <p className="text-gray-500 text-sm">No tickets in progress</p>
             )}
           </div>
+          </div>
 
-          {/* Resolved Tickets */}
-          <div>
+      {/* resoloved ticket */}
+          <div className="mb-12">
             <h3 className="font-semibold mb-2">Resolved Task</h3>
             {resolvedTickets.length > 0 ? (
-              <div className="bg-[#E0E7FF] p-2  ml-4 text-sm rounded-md">
-                {resolvedTickets.map((t) => (
-                  <div key={t.id}>{t.title}</div>
-                ))}
-              </div>
+             
+                resolvedTickets.map((t) => (
+                  
+                  <div key={t.id} className="bg-[#E0E7FF] p-2  ml-4 mb-1 text-sm rounded-md">{t.title}</div>
+
+                ))
+              
             ) : (
               <p className="text-gray-500 text-sm">No resolved tasks yet</p>
             )}

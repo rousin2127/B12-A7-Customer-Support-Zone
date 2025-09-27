@@ -4,8 +4,8 @@ const Navbar = () => {
   return (
     <div className=" bg-white shadow-md border-b-[0.5px] border-gray-300">
 
-      <nav className=" py-4 flex justify-between items-center w-[1140px] mx-auto">
-        <h1 className="md:text-xl text-sm font-bold">CS — Ticket System</h1>
+      <nav className=" py-4 flex justify-between items-center sm:w-[1140px] sm:mx-auto mx-5">
+        <h1 className="sm:text-xl text-md font-bold">CS — Ticket System</h1>
         <div className="md:flex hidden items-center gap-6">
           <a href="#" className="text-gray-600">
             Home
@@ -26,7 +26,7 @@ const Navbar = () => {
           <a href="#" className="text-gray-600">
             Contact
           </a>
-          <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+          <button className="bg-linear-to-tl from-[#9F62F2] to-[#632EE3] text-white px-4 py-2 rounded-lg hover:cursor-pointer">
             + New Ticket
           </button>
         </div>

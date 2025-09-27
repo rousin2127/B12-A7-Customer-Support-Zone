@@ -1,16 +1,23 @@
-# React + Vite
+1. What is JSX, and why is it used?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+JSX is a special way of writing code in React. It lets us write HTML inside JavaScript. React then changes that into real JavaScript that the browser understands. We use JSX because it makes our code look cleaner and easier to read, like designing the UI directly in the code.
 
-Currently, two official plugins are available:
+2. What is the difference between State and Props?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+State is like a component’s own memory – it can change and update over time. Props are like gifts that a parent gives to a child component. The child can use props, but cannot change them. In short: State changes inside the component, Props come from outside and cannot be changed by the child.
 
-## React Compiler
+3. What is the useState hook, and how does it work?
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+useState is a tool in React that helps a component remember something. For example, a counter that starts at 0. With useState(0), React gives us two things: the value (like count) and a function to change it (like setCount). Whenever we call setCount, React updates the value and shows the new result on the screen.
 
-## Expanding the ESLint configuration
+4. How can you share state between components in React?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To share state, we usually keep the state in the parent component and pass it down to children as props. If children need to update it, we also pass a function from the parent. For bigger apps, we can use React’s Context API or libraries like Redux to share state across many components without passing props everywhere.
+
+5. How is event handling done in React?
+
+In React, events (like button clicks) are written in camelCase, for example onClick. We give it a function to run when the event happens. Example:
+
+<button onClick={handleClick}>Click Me</button>
+
+Here, when the button is clicked, the handleClick function will run. React uses something called synthetic events so that events work the same in all browsers.
