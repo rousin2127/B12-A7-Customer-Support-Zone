@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <div className=" bg-purple-100 shadow-md border-b-[0.5px] border-gray-300">
 
-      <nav className="px-8 py-4 flex justify-between items-center w-[1020px] mx-auto">
+      <nav className="px-8 py-4 flex justify-between items-center w-[1140px] mx-auto">
         <h1 className="md:text-xl text-sm font-bold">PH University</h1>
         <div className="md:flex hidden items-center gap-6">
           <a href="#" className="text-gray-600">
